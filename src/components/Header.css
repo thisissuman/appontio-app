@@ -1,0 +1,56 @@
+.header-nav {
+  background-color: white;
+  color: black;
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ccc;
+  margin: 0; /* Reset margin */
+  max-width: 100%; /* Ensure the header spans the full width */
+}
+
+.logo {
+  width: 150px;
+  height: 50px;
+  background-image: url("../assets/panda.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+
+  font-size: large;
+  font-weight: 800;
+}
+
+.nav-link {
+  margin-top: 10px;
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.share-link-btn {
+  border: 1px solid #208008;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.share-link-btn span {
+  color: rgb(17, 163, 24);
+}

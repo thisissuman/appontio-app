@@ -1,0 +1,15 @@
+
+
+  :root {
+    background-image: url("./assets/banner.jpg");
+    background-size: cover; /* Set background image to cover entire element */
+    text-rendering: optimizeLegibility;
+  }
+
+  
+
+
+  * {
+    padding: 0;
+    margin: 0;
+  }

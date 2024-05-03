@@ -1,0 +1,72 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  margin-top: 20px;
+  padding-top: 10px;
+  outline: none;
+}
+
+.wrapper {
+  background-color: rgb(231, 236, 226);
+  border-radius: 10px 0 0 10px;
+  padding: 30px;
+  height: 370px;
+}
+.wrapperslot {
+  background-color: white;
+  border-radius: 0 10px 10px 0;
+  padding: 30px;
+  height: 370px;
+}
+
+.calendar {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.info {
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+
+
+.select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.slots {
+  margin-top: 20px;
+  width: 340px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #f0f0f0;
+}
