@@ -7,7 +7,7 @@ const Header = () => {
       <div className="container">
         <div className="logo"></div>
         <div className="nav-links">
-          <a href="#" className="nav-link">Menu</a>
+          <a href="#" className="nav-link">Menu &#8964;</a>
           <a href="#" className="nav-link">Contact Us</a>
           <button className="share-link-btn">
             <span>📩 Share Link</span>
