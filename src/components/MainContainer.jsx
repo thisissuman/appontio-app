@@ -1,42 +1,43 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./maincontainer.css";
 import DatePicker from "./DatePicker";
 import { format } from "date-fns";
 import { useSelector } from "react-redux";
-
 import { ThreeDots } from "react-loader-spinner";
+
 const MainContainer = () => {
+  // State to track the selected slot
   const [selectedSlot, setSelectedSlot] = useState(null);
 
+  // Get the date, slots, and loading state from Redux
   const { newdate, slot, isLoading } = useSelector((state) => state.datepick);
-  console.log(slot);
 
-  let renderedSlots;
-  if (slot && slot.length > 0) {
-    renderedSlots = slot.slice(0, 4).map((slot, index) => {
-      const startTime = format(new Date(slot.start_time), "hh:mm a");
-      const endTime = format(new Date(slot.end_time), "hh:mm a");
-      const isSelected = selectedSlot === index;
-      return (
-        <button
-          key={index}
-          className={`button ${isSelected ? "selected" : ""}`}
-          onClick={() => setSelectedSlot(index)}
-        >
-          {`${startTime} - ${endTime}`}
-          {isSelected && (
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Eo_circle_green_checkmark.svg"
-              alt=""
-            />
-          )}
-        </button>
-      );
-    });
-  } else {
-    renderedSlots = <p>No slots available for this date.</p>;
-  }
+  // Map the first 4 slots to button elements, or show a message if no slots are available
+  const renderedSlots =
+    slot && slot.length > 0 ? (
+      slot.slice(0, 4).map((slot, index) => {
+        const startTime = format(new Date(slot.start_time), "hh:mm a");
+        const endTime = format(new Date(slot.end_time), "hh:mm a");
+        const isSelected = selectedSlot === index;
+        return (
+          <button
+            key={index}
+            className={`button ${isSelected ? "selected" : ""}`}
+            onClick={() => setSelectedSlot(index)}
+          >
+            {`${startTime} - ${endTime}`}
+            {isSelected && (
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Eo_circle_green_checkmark.svg"
+                alt=""
+              />
+            )}
+          </button>
+        );
+      })
+    ) : (
+      <p>No slots available for this date.</p>
+    );
 
   return (
     <>
