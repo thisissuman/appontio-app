@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import datepickSlice from "../components/datepickSlice";
+import datepickSlice from "./datepickSlice";
 const store = configureStore({
   reducer: {
     datepick: datepickSlice,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useDispatch } from "react-redux";
-import { setDate, setSlots , setIsLoading} from "./datepickSlice";
+import { setDate, setSlots , setIsLoading} from "../store/datepickSlice";
 
 const DatePicker = () => {
   const [selected, setSelected] = useState(new Date());
