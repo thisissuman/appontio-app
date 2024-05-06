@@ -3,7 +3,7 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { format } from "date-fns";
 import { useDispatch } from "react-redux";
-import { setDate, setSlots } from "./datepickSlice";
+import { setDate, setSlots , setIsLoading} from "./datepickSlice";
 import styles from "react-day-picker/dist/style.module.css";
 const DatePicker = () => {
   const [selected, setSelected] = useState(new Date());
@@ -24,6 +24,7 @@ const DatePicker = () => {
   }, [selected]);
 
   const getDate = async () => {
+    dispatch(setIsLoading(true)); 
     setNextDay(new Date(selected.getTime() + 24 * 60 * 60 * 1000));
     const data = await fetch(
       `https://app.appointo.me/scripttag/mock_timeslots?start_date=${selected}&end_date=${nextday}`
@@ -33,6 +34,7 @@ const DatePicker = () => {
 
     setSlot(json[0]?.slots);
     dispatch(setSlots(json[0]?.slots));
+    dispatch(setIsLoading(false)); 
   };
 
   return (

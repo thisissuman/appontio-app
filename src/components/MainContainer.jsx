@@ -4,9 +4,12 @@ import "./maincontainer.css";
 import DatePicker from "./DatePicker";
 import { format } from "date-fns";
 import { useSelector } from "react-redux";
+
+import { ThreeDots } from "react-loader-spinner";
 const MainContainer = () => {
   const [selectedSlot, setSelectedSlot] = useState(null);
-  const { newdate, slot } = useSelector((state) => state.datepick);
+
+  const { newdate, slot, isLoading } = useSelector((state) => state.datepick);
   console.log(slot);
 
   let renderedSlots;
@@ -58,8 +61,22 @@ const MainContainer = () => {
             <h4 className="slottitle">
               {format(newdate, "EEEE, MMM d").toUpperCase()} - AVAILABLE SLOTS
             </h4>
-
-            <div className="rednerslot">{renderedSlots}</div>
+            <div className={` ${isLoading ? "loading" : ""} `}>
+              {isLoading ? (
+                <ThreeDots
+                  visible={true}
+                  height="80"
+                  width="80"
+                  color="#4fa94d"
+                  radius="9"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+              ) : (
+                <div className="rednerslot">{renderedSlots}</div>
+              )}
+            </div>
           </div>
         </section>
       </main>
