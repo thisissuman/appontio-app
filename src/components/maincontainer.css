@@ -127,8 +127,11 @@ img {
 }
 
 .full-width-button > button {
-  color: #378760;
+  color: #555770;
   margin: 10px;
+  font-size: 20px;
+  outline: none;
+  text-decoration: none;
   padding: 8px, 30px, 8px, 30px;
   width: 120px;
   height: 40px;
@@ -143,10 +146,28 @@ img {
   color: black;
 }
 
-.rednerslot > p{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid red;
+
+
+.rednerslot > p {
+  display: inline-block;
+  padding: 20px;
+  margin-top: 60px;
+  margin-left: 50px;
+  border: 2px solid rgb(6, 105, 5);
   border-radius: 10px;
+  color: #fefdff;
+  font-weight: bold;
+  font-size: 15px;
+  background: black;
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes slide-in {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
 }

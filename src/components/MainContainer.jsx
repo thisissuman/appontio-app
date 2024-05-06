@@ -4,6 +4,7 @@ import DatePicker from "./DatePicker";
 import { format } from "date-fns";
 import { useSelector } from "react-redux";
 import { ThreeDots } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 const MainContainer = () => {
   // State to track the selected slot
@@ -83,7 +84,9 @@ const MainContainer = () => {
       </main>
       <div className="full-width-button">
         <span>POWERED BY APPONTIO</span>
-        <button>Next &gt;</button>
+        <button>
+          <Link to="/schedule" style={{ textDecoration: 'none' }}>Next &gt;</Link>
+        </button>
       </div>
     </>
   );
