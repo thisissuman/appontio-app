@@ -2,13 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const datePickerSlice = createSlice({
   name: "datepicker",
-  initialState: new Date(),
+  initialState: { newdate: new Date(), slot: [] },
   reducers: {
     setDate: (state, action) => {
-      return action.payload;
+        state.newdate = action.payload;
+    },
+    setSlots: (state, action) => {
+        
+        state.slot = action.payload;
+        
     },
   },
 });
 
-export const { setDate } = datePickerSlice.actions;
+export const { setDate,setSlots  } = datePickerSlice.actions;
 export default datePickerSlice.reducer;

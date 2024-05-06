@@ -5,9 +5,36 @@ import DatePicker from "./DatePicker";
 import { format } from "date-fns";
 import { useSelector } from "react-redux";
 const MainContainer = () => {
-  const [selected, setSelected] = useState("");
-  const currentdate = useSelector((state) => state.datepick);
-  console.log(format(currentdate, 'EEEE, MMM d').toUpperCase());
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const { newdate, slot } = useSelector((state) => state.datepick);
+  console.log(slot);
+
+  let renderedSlots;
+  if (slot && slot.length > 0) {
+    renderedSlots = slot.slice(0, 4).map((slot, index) => {
+      const startTime = format(new Date(slot.start_time), "hh:mm a");
+      const endTime = format(new Date(slot.end_time), "hh:mm a");
+      const isSelected = selectedSlot === index;
+      return (
+        <button
+          key={index}
+          className={`button ${isSelected ? "selected" : ""}`}
+          onClick={() => setSelectedSlot(index)}
+        >
+          {`${startTime} - ${endTime}`}
+          {isSelected && (
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Eo_circle_green_checkmark.svg"
+              alt=""
+            />
+          )}
+        </button>
+      );
+    });
+  } else {
+    renderedSlots = <p>No slots available for this date.</p>;
+  }
+
   return (
     <>
       <main className="main">
@@ -28,11 +55,11 @@ const MainContainer = () => {
             <option value="45">45 min</option>
           </select>
           <div className="slots">
-            <h4 className="slottitle"> {format(currentdate, 'EEEE, MMM d').toUpperCase()} - AVAILABLE SLOTS</h4>
-            <button className="button">03:30 AM - 04:00 AM</button>
-            <button className="button">04:00 AM - 04:30 AM</button>
-            <button className="button">04:30 AM - 05:00 AM</button>
-            <button className="button">05:00 AM - 05:30 AM</button>
+            <h4 className="slottitle">
+              {format(newdate, "EEEE, MMM d").toUpperCase()} - AVAILABLE SLOTS
+            </h4>
+
+            <div className="rednerslot">{renderedSlots}</div>
           </div>
         </section>
       </main>

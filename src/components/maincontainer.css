@@ -71,11 +71,33 @@
   border-radius: 5px;
   background-color: transparent;
   cursor: pointer;
+  
+  display: flex;
+  justify-content: space-between;
+}
+img {
+  object-fit: contain;
+  width: 12px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color:white ;
+  
+}
+.button.selected {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #378760;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: #f0f0f0;
+  background-color: #378760;
 }
+
 .full-width-button {
   display: flex;
   justify-content: space-between;
@@ -107,4 +129,18 @@
   font-weight: 700;
   border-radius: 10px;
   outline: none;
+  cursor: pointer;
+  
+}
+.full-width-button > button:hover{
+  background-color: #abcbf1;
+  color: black;
+}
+
+.rednerslot > p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 10px;
 }

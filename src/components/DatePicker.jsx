@@ -3,7 +3,7 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { format } from "date-fns";
 import { useDispatch } from "react-redux";
-import { setDate } from "./datepickSlice";
+import { setDate, setSlots } from "./datepickSlice";
 import styles from "react-day-picker/dist/style.module.css";
 const DatePicker = () => {
   const [selected, setSelected] = useState(new Date());
@@ -22,6 +22,7 @@ const DatePicker = () => {
     getDate();
     dispatch(setDate(selected));
   }, [selected]);
+
   const getDate = async () => {
     setNextDay(new Date(selected.getTime() + 24 * 60 * 60 * 1000));
     const data = await fetch(
@@ -30,13 +31,10 @@ const DatePicker = () => {
 
     const json = await data.json();
 
-    if (json.length > 0 && json[0]?.slots) {
-      setSlot(json[0]?.slots);
-    } else {
-      console.log("No slots available for the selected date range");
-    }
+    setSlot(json[0]?.slots);
+    dispatch(setSlots(json[0]?.slots));
   };
-console.log(slot);
+
   return (
     <>
       <DayPicker
